@@ -1,0 +1,11 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Edit{% endblock %}
+
+{% block content %}
+ <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" class="inline-block px-6 py-3 text-lg font-semibold bg-green-500 text-white rounded-xl hover:bg-green-700">
+ </form>
+{% endblock %}

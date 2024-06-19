@@ -1,0 +1,15 @@
+{% extends 'core/base.html' %}
+
+{% block title %}{{obj}}{% endblock %}
+
+{% block content %}
+<div>
+    Are you sure want to delete  "{{obj}}"
+</div>
+<br>
+ <form method="POST">
+    {% csrf_token %}
+    <input type="submit" class="inline-block px-6 py-3 text-lg font-semibold bg-red-500 text-white rounded-xl hover:bg-red-700">
+ </form> 
+
+{% endblock %}

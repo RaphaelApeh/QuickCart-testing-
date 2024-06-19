@@ -1,0 +1,35 @@
+{% extends 'core/base.html' %}
+
+{% block title %} home {% endblock %}
+
+
+{% block content%}
+    
+    <form action="." method="GET">
+      <input class="mb-4 py-2 px-20 w-500 flex justify-center rounded-xl mt-6 shadow-b-xl" type="search" name="query" value="{{query}}" placeholder='Search for Product'>&nbsp;
+      <button type="submit" class="inline-block px-6 py-3 text-lg font-semibold bg-gray-200 text-white rounded-xl hover:bg-gray-700">SEARCH</button>
+    </form>
+    <h2>{{ request.user.username }}</h2>
+    <div>
+      <!-- <a href="?filter={{category.Cars}}">Cars</a> -->
+      <p>Total Item "{{item_count}}"</p>
+      <Strong>Categories "{{category_count}}"</Strong>
+    </div>
+  </div>
+  <div class="grid lg:grid-cols-3 gap-10 flex justify-center item-center h-srceen">
+    {% if item %}
+        {% for item in item %}
+        <div class="">
+      <!--  -->
+          <img src="{{ item.image.url }}" alt="" class="rounded-l-xl">
+          <div class="p-6 bg-white rounded-b-xl shadow-xl mb-4">
+          <a href="{% url 'detail' item.id %}"><h1 class="text-2xl font-bold">{{ item.name }}</h1></a>
+          <p class="text-gray-500 "><strong>$</strong>{{ item.price }}</p>
+          <small class="text-gray-500">{{item.created_by | timesince}} ago</small>
+        </div>
+               {% endfor %}
+    {% else %}
+       <h1 class="px-6 py-2 flex justify-center font-bold">No Items Found</h1>
+    {% endif %}
+  </div>
+{% endblock %}
